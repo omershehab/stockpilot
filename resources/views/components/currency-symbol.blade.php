@@ -1,0 +1,9 @@
+@props(['currency' => 'SAR'])
+
+@if (strtoupper($currency) === 'SAR')
+    <svg {{ $attributes->merge(['class' => 'currency-symbol inline-block h-[1em] w-auto shrink-0']) }} style="height:1em;width:auto;display:inline-block;vertical-align:-0.12em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 549 613" role="img" aria-label="Saudi Riyal" fill="currentColor">
+        <path fill-rule="evenodd" d="M 0 560 L 6 530 L 18 497 L 193 460 L 193 377 L 32 412 L 30 412 L 30 408 L 36 376 L 49 341 L 193 311 L 193 54 L 221 25 L 257 0 L 258 297 L 323 283 L 322 87 L 354 54 L 387 32 L 388 269 L 549 235 L 543 271 L 530 306 L 388 336 L 388 401 L 547 367 L 549 367 L 549 372 L 542 407 L 530 438 L 323 482 L 323 350 L 258 363 L 258 444 L 254 454 L 225 497 L 207 518 L 193 526 L 179 530 L 14 565 L 0 567 Z M 323 605 L 329 576 L 341 543 L 548 499 L 549 504 L 542 539 L 530 570 L 329 613 L 323 613 Z" />
+    </svg>
+@else
+    <span {{ $attributes }}>{{ $currency }}</span>
+@endif

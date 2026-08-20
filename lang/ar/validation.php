@@ -1,0 +1,43 @@
+<?php
+
+return [
+    'required' => 'حقل :attribute مطلوب.',
+    'required_with' => 'حقل :attribute مطلوب عند وجود :values.',
+    'email' => 'يجب أن يكون :attribute بريداً إلكترونياً صالحاً.',
+    'max' => [
+        'string' => 'يجب ألا يزيد :attribute عن :max حرفاً.',
+        'numeric' => 'يجب ألا تزيد قيمة :attribute عن :max.',
+        'array' => 'يجب ألا يحتوي :attribute على أكثر من :max عناصر.',
+        'file' => 'يجب ألا يزيد حجم :attribute عن :max كيلوبايت.',
+    ],
+    'min' => [
+        'string' => 'يجب ألا يقل :attribute عن :min أحرف.',
+        'numeric' => 'يجب ألا تقل قيمة :attribute عن :min.',
+        'array' => 'يجب أن يحتوي :attribute على :min عناصر على الأقل.',
+        'file' => 'يجب ألا يقل حجم :attribute عن :min كيلوبايت.',
+    ],
+    'confirmed' => 'تأكيد :attribute غير متطابق.',
+    'unique' => 'قيمة :attribute مستخدمة بالفعل.',
+    'exists' => 'قيمة :attribute المحددة غير صالحة.',
+    'in' => 'قيمة :attribute المحددة غير صالحة.',
+    'numeric' => 'يجب أن يكون :attribute رقماً.',
+    'integer' => 'يجب أن يكون :attribute عدداً صحيحاً.',
+    'string' => 'يجب أن يكون :attribute نصاً.',
+    'array' => 'يجب أن يكون :attribute قائمة.',
+    'image' => 'يجب أن يكون :attribute صورة.',
+    'regex' => 'صيغة :attribute غير صحيحة.',
+    'mimes' => 'يجب أن يكون :attribute من نوع: :values.',
+    'attributes' => [
+        'name' => 'الاسم',
+        'email' => 'البريد الإلكتروني',
+        'mobile_number' => 'رقم الجوال',
+        'password' => 'كلمة المرور',
+        'company_name' => 'اسم الشركة',
+        'currency' => 'العملة',
+        'warehouse_name' => 'اسم المستودع',
+        'warehouse_address' => 'موقع المستودع',
+        'team_name' => 'اسم الفريق',
+        'invite_email' => 'بريد المستخدم المدعو',
+        'invite_role' => 'دور المستخدم المدعو',
+    ],
+];

@@ -1,0 +1,21 @@
+@extends('layouts.admin')
+@section('title', __('Subscribers'))
+@section('heading', __('Subscribers'))
+@section('subheading', __('Monitor company workspaces, plans, subscription health, and adoption'))
+
+@section('content')
+    <div class="card overflow-hidden">
+        <form method="GET" class="grid gap-3 border-b border-slate-200 p-4 md:grid-cols-[minmax(260px,1fr)_180px_180px_auto]">
+            <input class="field" type="search" name="search" value="{{ $search }}" placeholder="{{ __('Search company, email, or workspace…') }}">
+            <select class="field" name="status"><option value="">{{ __('All statuses') }}</option>@foreach($statuses as $option)<option value="{{ $option }}" @selected($status === $option)>{{ __(str_replace('_', ' ', ucfirst($option))) }}</option>@endforeach</select>
+            <select class="field" name="plan"><option value="">{{ __('All plans') }}</option>@foreach($plans as $option)<option value="{{ $option }}" @selected($plan === $option)>{{ __(ucfirst($option)) }}</option>@endforeach</select>
+            <div class="flex gap-2"><button class="btn-primary">{{ __('Filter') }}</button>@if($search || $status || $plan)<a class="btn-secondary" href="{{ route('admin.subscribers.index') }}">{{ __('Clear') }}</a>@endif</div>
+        </form>
+        <div class="overflow-x-auto"><table class="w-full min-w-[980px] text-sm"><thead class="bg-slate-50 text-xs uppercase text-slate-500"><tr><th class="px-5 py-3 text-start">{{ __('Subscriber') }}</th><th class="px-5 py-3 text-start">{{ __('Plan & status') }}</th><th class="px-5 py-3 text-center">{{ __('Users') }}</th><th class="px-5 py-3 text-center">{{ __('Products') }}</th><th class="px-5 py-3 text-center">{{ __('Locations') }}</th><th class="px-5 py-3 text-center">{{ __('Activity') }}</th><th class="px-5 py-3 text-start">{{ __('Trial / joined') }}</th><th class="px-5 py-3"></th></tr></thead><tbody class="divide-y divide-slate-100">
+            @forelse($companies as $company)
+                <tr class="hover:bg-slate-50"><td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-100 font-bold text-cyan-700">{{ strtoupper(mb_substr($company->name, 0, 2)) }}</span><div><a class="font-semibold hover:text-cyan-700" href="{{ route('admin.subscribers.show', $company) }}">{{ $company->name }}</a><small class="block text-slate-400">{{ $company->users->first()?->email ?? $company->email ?? __('No billing email') }}</small></div></div></td><td class="px-5 py-4"><span class="badge bg-slate-100 text-slate-700">{{ __(ucfirst($company->plan)) }}</span><span class="badge ms-1 {{ $company->subscription_status === 'active' ? 'bg-emerald-100 text-emerald-700' : ($company->subscription_status === 'trial' ? 'bg-cyan-100 text-cyan-700' : 'bg-amber-100 text-amber-700') }}">{{ __(str_replace('_', ' ', ucfirst($company->subscription_status))) }}</span>@if(!$company->is_active)<span class="badge ms-1 bg-rose-100 text-rose-700">{{ __('Disabled') }}</span>@endif</td><td class="px-5 py-4 text-center font-semibold">{{ $company->users_count }} / {{ $company->user_limit ?? '∞' }}</td><td class="px-5 py-4 text-center font-semibold">{{ $company->products_count }} / {{ $company->product_limit ?? '∞' }}</td><td class="px-5 py-4 text-center">{{ $company->locations_count }} / {{ $company->warehouse_limit ?? '∞' }}</td><td class="px-5 py-4 text-center">{{ $company->stock_transactions_count }}</td><td class="px-5 py-4"><span class="block text-slate-600">{{ $company->trial_ends_at?->format('M d, Y') ?? '—' }}</span><small class="text-slate-400">{{ __('Joined :date', ['date' => $company->created_at->format('M d, Y')]) }}</small></td><td class="px-5 py-4 text-end"><a href="{{ route('admin.subscribers.show', $company) }}" class="font-semibold text-cyan-700 hover:underline">{{ __('Inspect') }} <span class="rtl-flip inline-block">→</span></a></td></tr>
+            @empty<tr><td colspan="8" class="px-5 py-16 text-center"><strong class="block text-slate-600">{{ __('No matching subscribers') }}</strong><span class="mt-1 block text-sm text-slate-400">{{ __('Try changing your filters.') }}</span></td></tr>@endforelse
+        </tbody></table></div>
+        @if($companies->hasPages())<div class="border-t border-slate-200 p-4">{{ $companies->links() }}</div>@endif
+    </div>
+@endsection

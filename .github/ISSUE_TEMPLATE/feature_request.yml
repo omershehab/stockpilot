@@ -1,0 +1,30 @@
+name: Feature request
+description: Propose a focused improvement to StockPilot
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What workflow or user need would this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Explain the behavior you would like to see.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe workarounds or different approaches.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups and examples are welcome; do not include private business data.

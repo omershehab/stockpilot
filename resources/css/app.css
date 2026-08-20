@@ -1,0 +1,71 @@
+@import './tajawal.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body { font-family: Inter, "Segoe UI", Tahoma, Arial, sans-serif; }
+    html { color-scheme: light; }
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: rgb(2 6 23) !important; @apply text-slate-100; }
+    html.dark input::placeholder, html.dark textarea::placeholder { color: rgb(100 116 139); }
+    html.dark select option { @apply bg-slate-900 text-slate-100; }
+    [dir="rtl"] input[type="email"], [dir="rtl"] input[type="url"], [dir="rtl"] input[type="tel"], [dir="rtl"] .font-mono, [dir="rtl"] code { direction: ltr; text-align: left; }
+    [dir="rtl"] input[type="number"] { direction: ltr; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    [x-cloak] { display: none !important; }
+}
+
+@layer components {
+    .card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900; }
+    .btn-primary { @apply inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950; }
+    .btn-secondary { @apply inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800; }
+    .field { @apply block w-full rounded-xl border-slate-300 bg-white text-sm shadow-sm focus:border-emerald-500 focus:ring-emerald-500 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100; }
+    .label { @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200; }
+    .badge { @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold; }
+}
+
+@layer utilities {
+    .scrollbar-none { scrollbar-width: none; }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .dark .bg-white, .dark .bg-white\/90, .dark .bg-white\/95 { background-color: rgb(15 23 42); }
+    .dark .bg-slate-50 { background-color: rgb(17 24 39); }
+    .dark .bg-slate-100 { background-color: rgb(30 41 59); }
+    .dark .bg-slate-200 { background-color: rgb(51 65 85); }
+
+    .dark .text-slate-900, .dark .text-slate-800 { color: rgb(241 245 249); }
+    .dark .text-slate-700 { color: rgb(226 232 240); }
+    .dark .text-slate-600 { color: rgb(203 213 225); }
+    .dark .text-slate-500 { color: rgb(148 163 184); }
+
+    .dark .border-slate-100, .dark .border-slate-200, .dark .border-slate-200\/80 { border-color: rgb(51 65 85); }
+    .dark .border-slate-300 { border-color: rgb(71 85 105); }
+    .dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+    .dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: rgb(51 65 85); }
+
+    .dark .hover\:bg-slate-50:hover, .dark .hover\:bg-slate-100:hover { background-color: rgb(30 41 59); }
+    .dark .hover\:text-slate-700:hover, .dark .hover\:text-slate-900:hover { color: rgb(248 250 252); }
+
+    .dark .bg-emerald-50, .dark .bg-emerald-100, .dark .bg-emerald-50\/60 { background-color: rgb(6 78 59 / .45); }
+    .dark .bg-rose-50, .dark .bg-rose-100, .dark .bg-rose-50\/60 { background-color: rgb(76 5 25 / .5); }
+    .dark .bg-amber-50, .dark .bg-amber-100, .dark .bg-amber-50\/60 { background-color: rgb(69 26 3 / .5); }
+    .dark .bg-blue-50, .dark .bg-blue-100 { background-color: rgb(23 37 84 / .55); }
+    .dark .bg-cyan-50, .dark .bg-cyan-100 { background-color: rgb(22 78 99 / .45); }
+    .dark .bg-violet-50, .dark .bg-violet-100 { background-color: rgb(46 16 101 / .45); }
+    .dark .bg-orange-100 { background-color: rgb(67 20 7 / .5); }
+
+    .dark .text-emerald-600, .dark .text-emerald-700, .dark .text-emerald-800 { color: rgb(110 231 183); }
+    .dark .text-rose-600, .dark .text-rose-700, .dark .text-rose-800, .dark .text-rose-900 { color: rgb(253 164 175); }
+    .dark .text-amber-600, .dark .text-amber-700, .dark .text-amber-800, .dark .text-amber-900 { color: rgb(252 211 77); }
+    .dark .text-blue-600, .dark .text-blue-700, .dark .text-blue-800, .dark .text-blue-900 { color: rgb(147 197 253); }
+    .dark .text-cyan-700 { color: rgb(103 232 249); }
+    .dark .text-violet-600, .dark .text-violet-700, .dark .text-violet-800 { color: rgb(196 181 253); }
+    .dark .text-orange-700 { color: rgb(253 186 116); }
+
+    .dark .border-emerald-200, .dark .border-emerald-300 { border-color: rgb(6 95 70); }
+    .dark .border-rose-200 { border-color: rgb(136 19 55); }
+    .dark .border-amber-200, .dark .border-amber-300 { border-color: rgb(146 64 14); }
+    .dark .border-blue-200 { border-color: rgb(30 64 175); }
+    .dark .border-cyan-100, .dark .border-cyan-200 { border-color: rgb(21 94 117); }
+}
